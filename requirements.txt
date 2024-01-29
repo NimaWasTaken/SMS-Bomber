@@ -1,0 +1,4 @@
+alive_progress==3.1.5
+colorama==0.4.6
+fake_headers==1.0.2
+Requests==2.31.0
