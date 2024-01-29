@@ -31,16 +31,8 @@ $ python sms_bomber.py
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-## Github Stats  
-<table><tr><td valign="top" width="50%">
+## GitHub Stats
 
-<img src="https://github-readme-stats.vercel.app/api?username=NimaWasTaken&show_icons=true&theme=onedark" align="left" style="width: 100%" />
+<img src="https://github-readme-stats.vercel.app/api?username=NimaWasTaken&show_icons=true&theme=onedark" align="left" height="200" />
 
-</td><td valign="top" width="50%">
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=NimaWasTaken&hide_border=true&layout=compact&theme=onedark" align="left" style="width: 100%" />
-
-</td></tr></table>  
-
-
-[![](https://visitcount.itsvg.in/api?id=NimaWasTaken&icon=0&color=0)](https://visitcount.itsvg.in)
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=NimaWasTaken&hide_border=true&layout=compact&theme=onedark" align="left" height="200" />
