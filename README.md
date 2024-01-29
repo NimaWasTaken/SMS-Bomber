@@ -6,7 +6,6 @@
 </div>
 
 ## Notice
-
 **Important information before using the SMS Bomber:**
 
 1. **Active Internet Connection:** Ensure that your device has an active internet connection to contact the required APIs.
@@ -18,22 +17,11 @@
 4. **No Harmful Use:** This application must not be used to cause harm, discomfort, or trouble to others. Respect the privacy and well-being of individuals.
 
 ## Requirements
-
 Use the package manager [pip](https://pip.pypa.io/en/stable/getting-started/) to install the requirements.
 
 ```bash
 $ pip install -r requirements.txt
 ```
-
-
-
-
-
-
-
-
-
-
 
 ## Usage
 ```bash
