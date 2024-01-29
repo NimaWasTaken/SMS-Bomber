@@ -25,7 +25,7 @@ $ pip install -r requirements.txt
 
 ## Usage
 ```bash
-$ python sms_bomber.py
+$ python Bomber.py
 ```
 
 ## License
