@@ -17,7 +17,7 @@
 
 4. **No Harmful Use:** This application must not be used to cause harm, discomfort, or trouble to others. Respect the privacy and well-being of individuals.
 
-## Installation
+## Requirements
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/getting-started/) to install the requirements.
 
