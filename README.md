@@ -1,7 +1,20 @@
 <p align="center">
-  <br>SMS Bomber</br>
+  <h1>SMS Bomber</h1>
 </p>
-## Notes
+
+## Notice
+
+**Important information before using the SMS Bomber:**
+
+1. **Active Internet Connection:** Ensure that your device has an active internet connection to contact the required APIs.
+
+2. **No Charges for SMS/Calls:** You will not be charged for any SMS or calls dispatched as a consequence of using this script. The application is designed for educational purposes only.
+
+3. **Python 3 and Latest Version:** Always ensure that you are using the latest version of the SMS Bomber and have Python 3 installed on your system.
+
+4. **No Harmful Use:** This application must not be used to cause harm, discomfort, or trouble to others. Respect the privacy and well-being of individuals.
+
+5. **Disclaimer:** By using this SMS Bomber, you agree that you cannot hold the contributors responsible for any misuse or unauthorized activities. Please use responsibly and in compliance with local laws and regulations.
 
 ## Installation
 
