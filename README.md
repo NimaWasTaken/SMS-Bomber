@@ -34,7 +34,7 @@ $ python sms_bomber.py
 ## GitHub Stats
 <table><tr><td valign="top" width="50%">
 
-<img src="https://github-readme-stats.vercel.app/api?username=NimaWasTaken&hide_border=true&show_icons=true&bg_color=00000000" align="left" style="width: 800px" />
+<img src="https://github-readme-stats.vercel.app/api?username=NimaWasTaken&hide_border=true&show_icons=true&rank_icon=github&bg_color=00000000" align="left" style="width: 800px" />
 
 </td><td valign="top" width="50%">
 
