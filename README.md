@@ -32,7 +32,12 @@ $ python sms_bomber.py
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## GitHub Stats
+<table><tr><td valign="top" width="50%">
 
-<img src="https://github-readme-stats.vercel.app/api?username=NimaWasTaken&show_icons=true&theme=onedark" align="left" height="200" />
+<img src="https://github-readme-stats.vercel.app/api?username=NimaWasTaken&show_icons=true&theme=onedark" align="left" style="width: 100%" />
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=NimaWasTaken&hide_border=true&layout=compact&theme=onedark" align="left" height="200" />
+</td><td valign="top" width="50%">
+
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=NimaWasTaken&hide_border=true&layout=compact&theme=onedark" align="left" style="width: 100%" />
+
+</td></tr></table>  
