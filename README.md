@@ -1,10 +1,18 @@
-# Sms Bomber
+<p align="center">
+  <strong>SMS Bomber</strong>
+</p>
+## Notes
+
 ## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/getting-started/) to install the requirements.
 
 ```bash
 $  pip install -r requirements.txt
+```
+## Usage
+```bash
+$ python sms_bomber.py
 ```
 
 ## Github Stats  
