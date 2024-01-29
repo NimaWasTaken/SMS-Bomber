@@ -9,12 +9,5 @@
 
 </td></tr></table>  
 
-<br/>  
-
-  
-
-<br/>
 
 ![Profile views counter](https://komarev.com/ghpvc/?username=NimaWasTaken&&style=flat-square)  
-
-<br/>
