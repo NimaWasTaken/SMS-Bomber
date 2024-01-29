@@ -8,7 +8,7 @@ $  pip install -r requirements.txt
 ```
 
 ## Github Stats  
-<table><tr><td valign="top" width="50%">
+<table><tr><td valign="top" width="25%">
 
 <img src="https://github-readme-stats.vercel.app/api?username=NimaWasTaken&show_icons=true&theme=onedark" align="left" style="width: 100%" />
 
