@@ -17,8 +17,6 @@
 
 4. **No Harmful Use:** This application must not be used to cause harm, discomfort, or trouble to others. Respect the privacy and well-being of individuals.
 
-5. **Disclaimer:** By using this SMS Bomber, you agree that you cannot hold the contributors responsible for any misuse or unauthorized activities. Please use responsibly and in compliance with local laws and regulations.
-
 ## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/getting-started/) to install the requirements.
