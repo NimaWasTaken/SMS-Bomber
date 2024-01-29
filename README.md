@@ -2,7 +2,9 @@
   <h1>SMS Bomber</h1>
 </div>
 <div align="center">
-  <p>A freely available and open-source SMS bombing application tailored for use in Iran.</p>
+  <p>A freely available and open-source SMS bombing application tailored for use in Iran.
+  Note: Remember to use this script responsibly and with proper authorization. Unauthorized use for spamming or any malicious intent is strictly prohibited.
+</p>
 </div>
 
 ## Notice
