@@ -43,5 +43,5 @@ $ python sms_bomber.py
 </td></tr></table>  
 
 
-![Profile views counter](https://komarev.com/ghpvc/?username=NimaWasTaken&&style=flat-square)  
+![Profile views counter](https://visitcount.itsvg.in/api?id=NimaWasTaken&icon=0&color=0)  
 
