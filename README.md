@@ -25,6 +25,16 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/getting-started/) to
 $ pip install -r requirements.txt
 ```
 
+
+
+
+
+
+
+
+
+
+
 ## Usage
 ```bash
 $ python sms_bomber.py
