@@ -1,5 +1,5 @@
 <p align="center">
-  <strong>SMS Bomber</strong>
+  <br>SMS Bomber</br>
 </p>
 ## Notes
 
