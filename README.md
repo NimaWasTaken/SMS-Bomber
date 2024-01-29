@@ -28,9 +28,6 @@ $ pip install -r requirements.txt
 $ python Bomber.py
 ```
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
-
 ## GitHub Stats
 <table><tr><td valign="top" width="50%">
 
