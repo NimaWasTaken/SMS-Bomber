@@ -1,10 +1,9 @@
 <div align="center">
-  <h1 style="color: #4CAF50;">SMS Bomber</h1>
+  <h1>SMS Bomber</h1>
 </div>
 <div align="center">
-  <p style="color: #007BFF;">A freely available and open-source SMS bombing application tailored for use in Iran.</p>
+  <p>A freely available and open-source SMS bombing application tailored for use in Iran.</p>
 </div>
-
 
 ## Notice
 **Important information before using the SMS Bomber:**
