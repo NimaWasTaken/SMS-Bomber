@@ -21,4 +21,4 @@ $  pip install -r requirements.txt
 
 ![Profile views counter](https://komarev.com/ghpvc/?username=NimaWasTaken&&style=flat-square)  
 
-### Note: Remember to use this script responsibly and with proper authorization. Unauthorized use for spamming or any malicious intent is strictly prohibited.
+##### Note: Remember to use this script responsibly and with proper authorization. Unauthorized use for spamming or any malicious intent is strictly prohibited.
