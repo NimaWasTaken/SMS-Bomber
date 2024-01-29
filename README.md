@@ -1,11 +1,11 @@
 <div align="center">
-  <h1>SMS Bomber</h1>
+  <h1>💣 SMS Bomber 💥</h1>
 </div>
 <div align="center">
   <p>A freely available and open-source SMS bombing application tailored for use in Iran.</p>
 </div>
 
-## Notice
+## 📌 Notice
 **Important information before using the SMS Bomber:**
 
 1. **Active Internet Connection:** Ensure that your device has an active internet connection to contact the required APIs.
@@ -16,19 +16,19 @@
 
 4. **No Harmful Use:** This application must not be used to cause harm, discomfort, or trouble to others. Respect the privacy and well-being of individuals.
 
-## Requirements
+## ✅ Requirements
 Use the package manager [pip](https://pip.pypa.io/en/stable/getting-started/) to install the requirements.
 
 ```bash
 $ pip install -r requirements.txt
 ```
 
-## Usage
+## ❓ Usage
 ```bash
 $ python Bomber.py
 ```
 
-## GitHub Stats
+## 📊 GitHub Stats
 <table><tr><td valign="top" width="50%">
 
 <img src="https://github-readme-stats.vercel.app/api?username=NimaWasTaken&hide_border=true&show_icons=true&rank_icon=github&bg_color=00000000" align="left" style="width: 1000px" />
