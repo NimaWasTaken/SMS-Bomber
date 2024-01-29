@@ -10,7 +10,7 @@
 
 1. **Active Internet Connection:** Ensure that your device has an active internet connection to contact the required APIs.
 
-2. **No Charges for SMS/Calls:** You will not be charged for any SMS or calls dispatched as a consequence of using this script. The application is designed for educational purposes only.
+2. **No Charges for SMS:** You will not be charged for any SMS dispatched as a consequence of using this script.
 
 3. **Python 3 and Latest Version:** Always ensure that you are using the latest version of the SMS Bomber and have Python 3 installed on your system.
 
