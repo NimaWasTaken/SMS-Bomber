@@ -43,4 +43,4 @@ $ python sms_bomber.py
 
 ![Profile views counter](https://komarev.com/ghpvc/?username=NimaWasTaken&&style=flat-square)  
 
-##### Note: Remember to use this script responsibly and with proper authorization. Unauthorized use for spamming or any malicious intent is strictly prohibited.
+##### Made with ❤
