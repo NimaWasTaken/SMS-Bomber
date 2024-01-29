@@ -43,4 +43,3 @@ $ python sms_bomber.py
 
 ![Profile views counter](https://komarev.com/ghpvc/?username=NimaWasTaken&&style=flat-square)  
 
-##### Made with ❤
