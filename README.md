@@ -25,14 +25,14 @@ $ pip install -r requirements.txt
 
 ## ❓ Usage
 ```bash
-$ bomber.py -t 09xxxxxxxxx -n 5 --process 3 -v --proxy http://your-proxy-url:port
+$ python bomber.py -t 09xxxxxxxxx -n 5 --process 3 -v --proxy http://your-proxy-url:port
 ```
 ### Options
 - `-h, --help`: Show help message and exit.
 - `-t TARGET, --target TARGET`: Specify the target phone number.
 - `-n TIMES, --times TIMES`: Specify the number of bombing times, default is 1.
 - `--process PROCESS`: Specify the number of processes, default is 5.
-- `-v, --verbose`: Set the log level. -v.
+- `-v, --verbose`: Display additional info.
 - `-x PROXY, --proxy PROXY`: Set the proxy for requests (http/https).
 
 ## 📊 GitHub Stats
