@@ -24,6 +24,7 @@ $ pip install -r requirements.txt
 ```
 
 ## ❓ Usage
+### Example
 ```bash
 $ python bomber.py -t 09xxxxxxxxx -n 5 --process 3 -v --proxy http://your-proxy-url:port
 ```
