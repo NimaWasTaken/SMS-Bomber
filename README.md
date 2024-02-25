@@ -23,7 +23,7 @@ $ git clone https://github.com/NimaWasTaken/SMS-Bomber.git
 ```
 Change Directory
 ```bash
-cd SMS-Bomber
+$ cd SMS-Bomber
 ```
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/getting-started/) to install the requirements.
