@@ -16,9 +16,17 @@
 
 4. **No Harmful Use:** This application must not be used to cause harm, discomfort, or trouble to others. Respect the privacy and well-being of individuals.
 
-## ✅ Requirements
-Use the package manager [pip](https://pip.pypa.io/en/stable/getting-started/) to install the requirements.
+## ✅ Installation
+Clone the github repo
+```bash
+$ git clone https://github.com/NimaWasTaken/SMS-Bomber.git
+```
+Change Directory
+```bash
+cd SMS-BOMBER
+```
 
+Use the package manager [pip](https://pip.pypa.io/en/stable/getting-started/) to install the requirements.
 ```bash
 $ pip install -r requirements.txt
 ```
