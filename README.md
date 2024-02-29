@@ -32,10 +32,6 @@ $ pip install -r requirements.txt
 ```
 
 ## ❓ Usage
-### Example
-```bash
-$ python bomber.py -t 09xxxxxxxxx -n 5 --process 3 -v --proxy http://your-proxy-url:port
-```
 ### Options
 - `-h, --help`: Show help message and exit.
 - `-t TARGET, --target TARGET`: Specify the target phone number.
@@ -43,14 +39,7 @@ $ python bomber.py -t 09xxxxxxxxx -n 5 --process 3 -v --proxy http://your-proxy-
 - `--process PROCESS`: Specify the number of processes, default is 5.
 - `-v, --verbose`: Display additional info.
 - `-x PROXY, --proxy PROXY`: Set the proxy for requests (http/https).
-
-## 📊 GitHub Stats
-<table><tr><td valign="top" width="50%">
-
-<img src="https://github-readme-stats.vercel.app/api?username=NimaWasTaken&hide_border=true&show_icons=true&rank_icon=github&bg_color=00000000" align="left" style="width: 1000px" />
-
-</td><td valign="top" width="50%">
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=NimaWasTaken&hide_border=true&layout=compact&bg_color=00000000" align="left" style="width:99%px" />
-
-</td></tr></table>  
+### Example
+```bash
+$ python bomber.py -t 09xxxxxxxxx -n 5 --process 3 -v --proxy http://your-proxy-url:port
+```
