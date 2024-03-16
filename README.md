@@ -32,14 +32,36 @@ $ pip install -r requirements.txt
 ```
 
 ## ❓ Usage
-### Options
-- `-h, --help`: Show help message and exit.
-- `-t TARGET, --target TARGET`: Specify the target phone number.
-- `-n TIMES, --times TIMES`: Specify the number of bombing times, default is 1.
-- `--process PROCESS`: Specify the number of processes, default is 5.
-- `-v, --verbose`: Display additional info.
-- `-x PROXY, --proxy PROXY`: Set the proxy for requests (http/https).
-### Example
+To use the SMS bombing tool, you can run the `main.py` script with the appropriate command-line arguments. Here's an overview of the available options:
+
 ```bash
-$ python bomber.py -t 09xxxxxxxxx -n 5 --process 3 -v --proxy http://your-proxy-url:port
+usage: main.py [-h] [-c COUNT] [-t THREADS] [-v] [-x PROXY] target
+
+SMS Bombing Tool
+
+positional arguments:
+  target                The target phone number (format: 09xxxxxxxxx)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c COUNT, --count COUNT
+                        Number of times to bomb the target phone number (default is 1)
+  -t THREADS, --threads THREADS
+                        Number of concurrent threads to use for bombing (default is 5)
+  -v, --verbose         Display additional information during the bombing process
+  -x PROXY, --proxy PROXY
+                        Set a proxy server for requests (http/https)
+```
+###Example Usage
+To bomb a phone number with default settings:
+```bash
+$ python main.py 09123456789
+```
+To specify the number of bombing times and threads:
+```bash
+python main.py 09123456789 -c 10 -t 3
+```
+To enable verbose mode and set a proxy server:
+```bash
+python main.py 09123456789 -v -x http://proxy.example.com:8080
 ```
