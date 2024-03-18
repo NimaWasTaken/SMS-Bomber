@@ -40,7 +40,7 @@ usage: main.py target [-h] [-c COUNT] [-t THREADS] [-v] [-x PROXY]
 SMS Bombing Tool
 
 positional arguments:
-  target                The target phone number (format: 09xxxxxxxxx)
+  target                         The target phone number (format: 09xxxxxxxxx)
 
 optional arguments:
   -h, --help                     show this help message and exit
