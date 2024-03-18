@@ -35,7 +35,7 @@ $ pip install -r requirements.txt
 To use the SMS bombing tool, you can run the `main.py` script with the appropriate command-line arguments. Here's an overview of the available options:
 
 ```bash
-usage: main.py [-h] [-c COUNT] [-t THREADS] [-v] [-x PROXY] target
+usage: main.py target [-h] [-c COUNT] [-t THREADS] [-v] [-x PROXY]
 
 SMS Bombing Tool
 
@@ -43,14 +43,11 @@ positional arguments:
   target                The target phone number (format: 09xxxxxxxxx)
 
 optional arguments:
-  -h, --help            show this help message and exit
-  -c COUNT, --count COUNT
-                        Number of times to bomb the target phone number (default is 1)
-  -t THREADS, --threads THREADS
-                        Number of concurrent threads to use for bombing (default is 5)
-  -v, --verbose         Display additional information during the bombing process
-  -x PROXY, --proxy PROXY
-                        Set a proxy server for requests (http/https)
+  -h, --help                     show this help message and exit
+  -c COUNT, --count COUNT        Number of times to bomb the target phone number (default is 1)
+  -t THREADS, --threads THREADS  Number of concurrent threads to use for bombing (default is 5)
+  -v, --verbose                  Display additional information during the bombing process
+  -x PROXY, --proxy PROXY        Set a proxy server for requests (http/https)
 ```
 ### Example Usage
 To bomb a phone number with default settings:
