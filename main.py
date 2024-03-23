@@ -55,7 +55,7 @@ def send_request(api_name, api_url, data, timeout, proxy=None):
     """
     headers = Headers()
     generated_headers = headers.generate()
-    current_time = datetime.now().strftime("%H:%M:%S")
+    current_time = datetime.now().strftime(f"{Style.BRIGHT}%H:%M:%S{Style.NORMAL}")
     response = None
 
     try:
@@ -68,13 +68,13 @@ def send_request(api_name, api_url, data, timeout, proxy=None):
         )
         response.raise_for_status()
 
-        return f"{Fore.YELLOW}[{current_time}] {Fore.GREEN}[+] {api_name} =>{Style.RESET_ALL} OK"
+        return f"{Fore.YELLOW}[{current_time}] {Fore.GREEN}{Style.BRIGHT}[+] {api_name}{Style.NORMAL} => OK"
     except requests.exceptions.RequestException as e:
-        if response:
-            error_code = response.status_code
+        if hasattr(e, "response") and hasattr(e.response, "status_code"):
+            error_code = e.response.status_code
         else:
             error_code = "Unknown"
-        return f"{Fore.YELLOW}[{current_time}] {Fore.RED}[-] {api_name} =>{Style.RESET_ALL} Error {error_code}: {e}"
+        return f"{Fore.YELLOW}[{current_time}] {Fore.RED}{Style.BRIGHT}[-] {api_name}{Style.NORMAL} => Error {error_code}"
 
 
 def process_target(api, proxy):
@@ -88,7 +88,9 @@ def handle_sigint(signal, frame):
     """
     Handle SIGINT signal.
     """
-    print(f"\n{Fore.YELLOW}[!] User interrupted the process.{Style.RESET_ALL}")
+    print(
+        f"\n{Fore.YELLOW}{Style.BRIGHT}[!] User interrupted the process.{Style.RESET_ALL}"
+    )
     _exit(1)
 
 
@@ -115,7 +117,7 @@ def main():
     proxy_dict = {"http": proxy, "https": proxy} if proxy else None
 
     if proxy:
-        print(f"Using proxy: {proxy}")
+        print(f"{Fore.MAGENTA}{Style.BRIGHT}[?] Using proxy: {proxy} {Style.RESET_ALL}")
 
     apis = send_otp_requests(target)
 
