@@ -26,7 +26,7 @@ Change Directory
 $ cd SMS-Bomber
 ```
 
-Use the [package manager pip](https://pip.pypa.io/en/stable/getting-started/) to install the requirements.
+Use the package manager [pip](https://pip.pypa.io/en/stable/getting-started/) to install the requirements.
 ```bash
 $ pip install -r requirements.txt
 ```
