@@ -1,5 +1,6 @@
 <div align="center">
   <h1><span style="color:brown;">💣 SMS Bomber 💣</span></h1>
+</div>
 <div align="center">
   <p>A freely available and open-source SMS bombing application tailored for use in Iran.</p>
 </div>
