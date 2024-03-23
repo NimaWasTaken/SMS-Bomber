@@ -1,6 +1,5 @@
 <div align="center">
-  <h1>💣 SMS Bomber 💣</h1>
-</div>
+  <h1><span style="color:brown;">💣 SMS Bomber 💣</span></h1>
 <div align="center">
   <p>A freely available and open-source SMS bombing application tailored for use in Iran.</p>
 </div>
@@ -15,7 +14,7 @@
 3. **Python 3 and Latest Version:** Always ensure that you are using the latest version of the SMS Bomber and have Python 3 installed on your system.
 
 4. **No Harmful Use:** This application must not be used to cause harm, discomfort, or trouble to others. Respect the privacy and well-being of individuals.
-
+  
 ## ✅ Installation
 Clone the github repo
 ```bash
