@@ -81,7 +81,7 @@ def process_target(api, proxy):
     """
     Process the target API.
     """
-    return send_request(api["name"], api["url"], api["data"], timeout=5, proxy=proxy)
+    return send_request(api["name"], api["url"], api["data"], timeout=2.5, proxy=proxy)
 
 
 def handle_sigint(signal, frame):
@@ -100,11 +100,11 @@ def display_results(futures):
     """
     results = [future.result() for future in futures]
     succeeded = [result for result in results if "OK" in result]
-    failed = [result for result in results if "Failed" in result]
+    failed = [result for result in results if "Error" in result]
 
     print(
-        f"\nSucceeded: {Fore.GREEN}{len(succeeded)}{Style.RESET_ALL}, "
-        f"Failed: {Fore.RED}{len(failed)}{Style.RESET_ALL}"
+        f"\n{Style.BRIGHT}{Fore.YELLOW}[?]{Fore.RESET} Succeeded: {Fore.GREEN}{len(succeeded)}{Style.RESET_ALL}, "
+        f"{Style.BRIGHT}Failed: {Fore.RED}{len(failed)}{Style.RESET_ALL}"
     )
 
 
