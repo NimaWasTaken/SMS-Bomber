@@ -49,7 +49,7 @@ optional arguments:
   -v, --verbose                  Display additional information during the bombing process
   -x PROXY, --proxy PROXY        Set a proxy server for requests (http/https)
 ```
-### - Example Usage
+### Example Usage
 To bomb a phone number with default settings:
 ```bash
 $ python main.py 09123456789
