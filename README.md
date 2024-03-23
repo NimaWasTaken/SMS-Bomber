@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>:trollface:face: SMS Bomber :trollface:</h1>
+  <h1>:trollface: SMS Bomber :trollface:</h1>
 </div>
 <div align="center">
   <p>A freely available and open-source SMS bombing application tailored for use in Iran.</p>
