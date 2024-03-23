@@ -60,5 +60,5 @@ $ python main.py 09123456789 -c 10 -t 3
 ```
 To enable verbose mode and set a proxy server:
 ```bash
-$ python main.py 09123456789 -v -x http://proxy.example.com:8080
+$ python main.py 09123456789 -v -x 127.0.0.1
 ```
