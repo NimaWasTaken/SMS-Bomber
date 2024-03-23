@@ -70,8 +70,11 @@ def send_request(api_name, api_url, data, timeout, proxy=None):
 
         return f"{Fore.YELLOW}[{current_time}] {Fore.GREEN}[+] {api_name} =>{Style.RESET_ALL} OK"
     except requests.exceptions.RequestException as e:
-        error_code = response.status_code if response else "Unknown"
-        return f"{Fore.YELLOW}[{current_time}] {Fore.RED}[-] {api_name} =>{Style.RESET_ALL} Error {error_code}"
+        if response:
+            error_code = response.status_code
+        else:
+            error_code = "Unknown"
+        return f"{Fore.YELLOW}[{current_time}] {Fore.RED}[-] {api_name} =>{Style.RESET_ALL} Error {error_code}: {e}"
 
 
 def process_target(api, proxy):
