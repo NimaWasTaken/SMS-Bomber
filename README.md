@@ -52,13 +52,13 @@ optional arguments:
 ### Example Usage
 To bomb a phone number with default settings:
 ```bash
-$ python main.py 09123456789
+$ python main.py 09xxxxxxxxx
 ```
 To specify the number of bombing times and threads:
 ```bash
-$ python main.py 09123456789 -c 10 -t 3
+$ python main.py 09xxxxxxxxx -c 10 -t 3
 ```
 To enable verbose mode and set a proxy server:
 ```bash
-$ python main.py 09123456789 -v -x http://proxy.example.com:8080
+$ python main.py 09xxxxxxxxx -v -x http://proxy.example.com:8080
 ```
