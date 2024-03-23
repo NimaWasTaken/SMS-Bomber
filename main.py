@@ -68,13 +68,13 @@ def send_request(api_name, api_url, data, timeout, proxy=None):
         )
         response.raise_for_status()
 
-        return f"{Fore.YELLOW}[{current_time}] {Fore.GREEN}{Style.BRIGHT}[+] {api_name}{Style.NORMAL} => OK{Style.RESET_ALL}"
+        return f"{Fore.YELLOW}[{current_time}] {Fore.GREEN}{Style.BRIGHT}[+] {api_name}{Style.NORMAL} => {Style.BRIGHT}OK{Style.RESET_ALL}"
     except requests.exceptions.RequestException as e:
         if hasattr(e, "response") and hasattr(e.response, "status_code"):
             error_code = e.response.status_code
         else:
             error_code = "Unknown"
-        return f"{Fore.YELLOW}[{current_time}] {Fore.RED}{Style.BRIGHT}[-] {api_name}{Style.NORMAL} => Error {error_code}{Style.RESET_ALL}"
+        return f"{Fore.YELLOW}[{current_time}] {Fore.RED}{Style.BRIGHT}[-] {api_name}{Style.NORMAL} => {Style.BRIGHT}Error {error_code}{Style.RESET_ALL}"
 
 
 def process_target(api, proxy):
