@@ -34,7 +34,7 @@ $ pip install -r requirements.txt
 ## ❓ Usage
 To use the SMS bombing tool, you can run the `main.py` script with the appropriate command-line arguments. Here's an overview of the available options:
 
-```bash
+```
 usage: main.py target [-h] [-c COUNT] [-t THREADS] [-v] [-x PROXY]
 
 SMS Bombing Tool
