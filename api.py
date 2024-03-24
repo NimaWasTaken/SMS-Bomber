@@ -1,4 +1,14 @@
 def send_otp_requests(phone_number):
+    """
+    Generates a list of APIs along with their respective URLs and data payloads
+    for sending OTP requests to the provided phone number.
+
+    Parameters:
+        phone_number (str): The target phone number to which OTP requests will be sent.
+
+    Returns:
+        list: A list of dictionaries containing API details, including name, URL, and data.
+    """
     apis = [
         {
             "name": "Snapp V1",
