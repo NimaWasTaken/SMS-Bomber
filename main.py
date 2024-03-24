@@ -137,6 +137,7 @@ def main():
                         print(f"{Fore.RED}{result}{Style.RESET_ALL}")
 
     display_results(futures)
+    print()
 
 
 if __name__ == "__main__":
