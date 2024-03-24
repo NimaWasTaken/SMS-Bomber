@@ -137,7 +137,7 @@ def main():
                         print(f"{Fore.RED}{result}{Style.RESET_ALL}")
 
     display_results(futures)
-    print()
+    print("SMS bombing completed successfully.")
 
 
 if __name__ == "__main__":
