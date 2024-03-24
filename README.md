@@ -15,26 +15,26 @@
 3. **Python 3 and Latest Version:** Always ensure that you are using the latest version of the SMS Bomber and have Python 3 installed on your system.
 
 4. **No Harmful Use:** This application must not be used to cause harm, discomfort, or trouble to others. Respect the privacy and well-being of individuals.
-
+  
 ## ✅ Installation
 Clone the github repo
 ```bash
-$ git clone https://github.com/NimaWasTaken/SMS-Bomber.git
+git clone https://github.com/NimaWasTaken/SMS-Bomber.git
 ```
 Change Directory
 ```bash
-$ cd SMS-Bomber
+cd SMS-Bomber
 ```
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/getting-started/) to install the requirements.
 ```bash
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## ❓ Usage
 To use the SMS bombing tool, you can run the `main.py` script with the appropriate command-line arguments. Here's an overview of the available options:
 
-```bash
+```diff 
 usage: main.py target [-h] [-c COUNT] [-t THREADS] [-v] [-x PROXY]
 
 SMS Bombing Tool
@@ -52,13 +52,13 @@ optional arguments:
 ### Example Usage
 To bomb a phone number with default settings:
 ```bash
-$ python main.py 09123456789
+python main.py 09xxxxxxxxx
 ```
 To specify the number of bombing times and threads:
 ```bash
-$ python main.py 09123456789 -c 10 -t 3
+python main.py 09xxxxxxxxx -c 10 -t 3
 ```
 To enable verbose mode and set a proxy server:
 ```bash
-$ python main.py 09123456789 -v -x http://proxy.example.com:8080
+python main.py 09xxxxxxxxx -v -x http://proxy.example.com:8080
 ```
