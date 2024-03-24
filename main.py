@@ -1,15 +1,18 @@
-import argparse
-import concurrent.futures
-import signal
-from datetime import datetime
-from os import _exit
-import requests
+# Standard Libraries
+import argparse  # Module for parsing command-line arguments
+import concurrent.futures  # Module for parallel execution
+import signal  # Module for signal handling
+from datetime import datetime  # Module for handling dates and times
+from os import _exit  # Module for exiting the program
 
-from alive_progress import alive_bar
-from colorama import Fore, Style
-from fake_headers import Headers
+# Third-Party Libraries
+import requests  # HTTP library for making requests
+from alive_progress import alive_bar  # Progress bar library
+from colorama import Fore, Style  # Library for colored output
+from fake_headers import Headers  # Library for generating fake HTTP headers
 
-from api import send_otp_requests
+# Custom Module
+from api import send_otp_requests  # Module for sending OTP requests
 
 
 def parse_arguments():
