@@ -19,16 +19,16 @@
 ## ✅ Installation
 Clone the github repo
 ```bash
-$ git clone https://github.com/NimaWasTaken/SMS-Bomber.git
+git clone https://github.com/NimaWasTaken/SMS-Bomber.git
 ```
 Change Directory
 ```bash
-$ cd SMS-Bomber
+cd SMS-Bomber
 ```
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/getting-started/) to install the requirements.
 ```bash
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## ❓ Usage
@@ -52,13 +52,13 @@ optional arguments:
 ### Example Usage
 To bomb a phone number with default settings:
 ```bash
-$ python main.py 09xxxxxxxxx
+python main.py 09xxxxxxxxx
 ```
 To specify the number of bombing times and threads:
 ```bash
-$ python main.py 09xxxxxxxxx -c 10 -t 3
+python main.py 09xxxxxxxxx -c 10 -t 3
 ```
 To enable verbose mode and set a proxy server:
 ```bash
-$ python main.py 09xxxxxxxxx -v -x http://proxy.example.com:8080
+python main.py 09xxxxxxxxx -v -x http://proxy.example.com:8080
 ```
