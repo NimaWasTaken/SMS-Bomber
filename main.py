@@ -8,7 +8,7 @@ from os import _exit  # Module for exiting the program
 # Third-Party Libraries
 import requests  # HTTP library for making requests
 from alive_progress import alive_bar  # Progress bar library
-from colorama import Fore, Style  # Library for colored output
+from colorama import init, Fore, Style  # Library for colored output
 from fake_headers import Headers  # Library for generating fake HTTP headers
 
 # Custom Module
@@ -71,13 +71,13 @@ def send_request(api_name, api_url, data, timeout, proxy=None):
         )
         response.raise_for_status()
 
-        return f"{Fore.YELLOW}[{current_time}] {Fore.GREEN}{Style.BRIGHT}[+] {api_name}{Style.NORMAL} => {Style.BRIGHT}OK{Style.RESET_ALL}"
+        return f"{Fore.YELLOW}[{current_time}] {Fore.GREEN}{Style.BRIGHT}[+] {api_name}{Style.NORMAL} => {Style.BRIGHT}OK"
     except requests.exceptions.RequestException as e:
         if hasattr(e, "response") and hasattr(e.response, "status_code"):
             error_code = e.response.status_code
         else:
             error_code = "Unknown"
-        return f"{Fore.YELLOW}[{current_time}] {Fore.RED}{Style.BRIGHT}[-] {api_name}{Style.NORMAL} => {Style.BRIGHT}Error {error_code}{Style.RESET_ALL}"
+        return f"{Fore.YELLOW}[{current_time}] {Fore.RED}{Style.BRIGHT}[-] {api_name}{Style.NORMAL} => {Style.BRIGHT}Error {error_code}"
 
 
 def process_target(api, proxy):
@@ -91,9 +91,7 @@ def handle_sigint(signal, frame):
     """
     Handle SIGINT signal.
     """
-    print(
-        f"\n{Fore.YELLOW}{Style.BRIGHT}[!] User interrupted the process.{Style.RESET_ALL}"
-    )
+    print(f"\n{Fore.YELLOW}{Style.BRIGHT}[!] User interrupted the process.")
     _exit(1)
 
 
@@ -106,8 +104,8 @@ def display_results(futures):
     failed = [result for result in results if "Error" in result]
 
     print(
-        f"\n{Style.BRIGHT}{Fore.YELLOW}[?]{Fore.RESET} Succeeded: {Fore.GREEN}{len(succeeded)}{Style.RESET_ALL}, "
-        f"{Style.BRIGHT}Failed: {Fore.RED}{len(failed)}{Style.RESET_ALL}"
+        f"\n{Style.BRIGHT}{Fore.YELLOW}[?]{Fore.RESET} Succeeded: {Fore.GREEN}{len(succeeded)}, "
+        f"{Style.BRIGHT}Failed: {Fore.RED}{len(failed)}"
     )
 
 
@@ -115,12 +113,14 @@ def main():
     """
     Main function to run the SMS bombing tool.
     """
+    init(autoreset=True)
+
     signal.signal(signal.SIGINT, handle_sigint)
     target, count, threads, verbose, proxy = parse_arguments()
     proxy_dict = {"http": proxy, "https": proxy} if proxy else None
 
     if proxy:
-        print(f"{Fore.MAGENTA}{Style.BRIGHT}[?] Using proxy: {proxy} {Style.RESET_ALL}")
+        print(f"{Fore.MAGENTA}{Style.BRIGHT}[?] Using proxy: {proxy}")
 
     apis = send_otp_requests(target)
 
@@ -135,9 +135,9 @@ def main():
                 result = future.result()
                 if verbose:
                     if "OK" in result:
-                        print(f"{Fore.GREEN}{result}{Style.RESET_ALL}")
+                        print(f"{Fore.GREEN}{result}")
                     else:
-                        print(f"{Fore.RED}{result}{Style.RESET_ALL}")
+                        print(f"{Fore.RED}{result}")
 
     display_results(futures)
     print("SMS bombing completed successfully.")
